@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class AnswerResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     */
+    public function toArray($request)
+    {
+        return [
+            'answer'     => $this->answer,
+            'is_correct' => $this->whenPivotLoaded('quote_answers',function(){
+                return $this->pivot->is_correct == 1;
+            })
+        ];
+    }
+}
