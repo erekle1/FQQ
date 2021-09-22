@@ -15,10 +15,7 @@ class AnswerResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'answer'     => $this->answer,
-            'is_correct' => $this->whenPivotLoaded('quote_answers',function(){
-                return $this->pivot->is_correct == 1;
-            })
+            'answer' => $this->answer,
         ];
     }
 }
