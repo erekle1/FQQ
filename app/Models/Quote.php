@@ -18,6 +18,6 @@ class Quote extends Model
 
     public function answers()
     {
-        return $this->belongsToMany(Answer::class);
+        return $this->belongsToMany(Answer::class,'quote_answers');
     }
 }

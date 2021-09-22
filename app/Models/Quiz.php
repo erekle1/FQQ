@@ -13,6 +13,6 @@ class Quiz extends Model
 
     public function quotes()
     {
-        return $this->belongsToMany(Quote::class);
+        return $this->belongsToMany(Quote::class,'quote_quiz');
     }
 }
