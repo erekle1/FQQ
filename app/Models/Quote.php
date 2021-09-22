@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Quote extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['quote'];
+
+    public function quizzes()
+    {
+        return $this->belongsToMany(Quiz::class);
+    }
+
+    public function answers()
+    {
+        return $this->belongsToMany(Answer::class);
+    }
 }

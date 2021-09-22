@@ -21,6 +21,7 @@ class CreateQuoteAnswersTable extends Migration
             $table->foreignId('answer_id')->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->boolean('is_correct')->default(0);
         });
     }
 
@@ -29,10 +30,8 @@ class CreateQuoteAnswersTable extends Migration
      *
      * @return void
      */
-    public function down(Blueprint $table)
+    public function down()
     {
-        $table->dropForeign('quote_answers_quote_id_foreign');
-        $table->dropForeign('quote_answers_answer_id_foreign');
         Schema::dropIfExists('quote_answers');
     }
 }

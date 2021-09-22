@@ -29,10 +29,8 @@ class CreateQuizQuotesTable extends Migration
      *
      * @return void
      */
-    public function down(Blueprint $table)
+    public function down()
     {
-        $table->dropForeign('quote_quiz_quote_id_foreign');
-        $table->dropForeign('quote_quiz_quiz_id_foreign');
         Schema::dropIfExists('quote_quiz');
     }
 }
