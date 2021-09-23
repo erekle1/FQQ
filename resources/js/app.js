@@ -6,6 +6,7 @@ import axios from 'axios'
 import router from './routes'
 
 const app = createApp(Index)
+
 app.config.globalProperties.$axios = axios;
 app.use(router)
 app.mount('#app')

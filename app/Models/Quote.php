@@ -18,6 +18,12 @@ class Quote extends Model
 
     public function answers()
     {
-        return $this->belongsToMany(Answer::class,'quote_answers')->withPivot('is_correct');
+        return $this->belongsToMany(Answer::class, 'quote_answers')->withPivot('is_correct')->inRandomOrder();
+    }
+
+    public function rightAnswer()
+    {
+        return $this->belongsToMany(Answer::class, 'quote_answers')->wherePivot('is_correct', 1)->first();
+
     }
 }

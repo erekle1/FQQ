@@ -21,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 //Route::post('login', [UserController::class, 'login']);
 
 require __DIR__.'/quiz.php';
+require __DIR__.'/stats.php';
