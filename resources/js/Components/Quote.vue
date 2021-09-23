@@ -86,6 +86,17 @@ export default {
         };
     },
     created() {
+        //if user is not created, create it
+        if (this.getUser() !== "testUser") {
+            this.setUser();
+        }
+
+        //destroy user after close browser
+        window.addEventListener('beforeunload', () => {
+            this.destroyUser()
+        })
+
+        //get quiz data
         this.fetchQuiz().then(() => {
             this.quote = this.$store.state.QuizModule.quiz.quotes[0]
             this.numOfQuotes = this.$store.state.QuizModule.quiz.quotes.length
@@ -100,22 +111,39 @@ export default {
     components: {ProgressBar},
     methods: {
         ...mapActions(["fetchQuiz"]),
+        updateNumOfUsers() {
+            return this.$axios.put('/api/stats/update-num-of-users');
+        },
+        setUser() {
+            localStorage.user = 'testUser';
+        },
+        getUser() {
+            return localStorage.user;
+        },
+        destroyUser() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('finished')
+        },
         submitAnswer(answer) {
+            if (this.getUser() !== 'testUser') {
+                this.updateNumOfUsers();
+            }
             this.loading = true;
             if (!this.selectedAnswer) {
                 this.$axios.get(`api/quiz/check-answer?quote_id=${this.quote.id}`).then(res => {
                     this.selectedAnswer = answer;
                     this.rightAnswer = res.data;
                     this.updateAnswersStat(this.isRight(answer));
-
                 });
             }
+
         },
         finish() {
             this.isFinished = true;
-            // this.updateFinishedStatus(isFinished)
-
-            this.updateFinishedStatus(true)
+            if (localStorage.finished === 1) {
+                this.updateFinishedStatus(true)
+            }
+            localStorage.finished = 1;
         },
         updateAnswersStat(isRight) {
             if (isRight) {
@@ -129,6 +157,9 @@ export default {
             }
         },
         isRight(answer) {
+            if (answer === 'no') {
+                return this.rightAnswer.id !== this.randomAnswer.id
+            }
             if (answer) {
                 return this.rightAnswer.id === answer.id;
             }
