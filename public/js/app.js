@@ -39305,11 +39305,11 @@ __webpack_require__.r(__webpack_exports__);
 var navigation = [{
   name: 'Dashboard',
   to: 'quiz',
-  current: true
+  routeName: 'quiz'
 }, {
   name: 'Statistics',
   to: "statistics",
-  current: false
+  routeName: 'statistics'
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -39396,6 +39396,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //if user is not created, create it
     if (this.getUser() !== "testUser") {
       this.setUser();
+      this.updateNumOfUsers();
     } //destroy user after close browser
 
 
@@ -39433,10 +39434,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     submitAnswer: function submitAnswer(answer) {
       var _this2 = this;
 
-      if (this.getUser() !== 'testUser') {
-        this.updateNumOfUsers();
-      }
-
       this.loading = true;
 
       if (!this.selectedAnswer) {
@@ -39451,7 +39448,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     finish: function finish() {
       this.isFinished = true;
 
-      if (localStorage.finished === 1) {
+      if (localStorage.finished !== 1) {
         this.updateFinishedStatus(true);
       }
 
@@ -39751,8 +39748,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
           key: item.name,
           to: item.to,
-          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']),
-          "aria-current": item.current ? 'page' : undefined
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium'])
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
             return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.name), 1
@@ -39764,7 +39760,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["to", "class", "aria-current"]);
+        , ["to", "class"]);
       }), 128
       /* KEYED_FRAGMENT */
       ))])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DisclosurePanel, {
@@ -39775,8 +39771,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
               key: item.name,
               to: item.to,
-              "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']),
-              "aria-current": item.current ? 'page' : undefined
+              "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['block px-3 py-2 rounded-md text-base font-medium'])
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                 return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.name), 1
@@ -39788,7 +39783,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             }, 1032
             /* PROPS, DYNAMIC_SLOTS */
-            , ["to", "class", "aria-current"]);
+            , ["to"]);
           }), 128
           /* KEYED_FRAGMENT */
           ))])];
@@ -40159,7 +40154,7 @@ var _hoisted_11 = {
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
   "class": "text-gray-800 text-center"
-}, "Percentage Of Incorect Answers", -1
+}, "Percentage Of Incorrect Answers", -1
 /* HOISTED */
 );
 
@@ -40169,11 +40164,11 @@ var _hoisted_13 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.num_of_users), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.num_of_users), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.finished_percentage), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.num_of_users), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.correct_answers), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.num_of_users), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.statistic.incorrect_answers), 1
   /* TEXT */
   )])]);
 }
@@ -40334,10 +40329,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var routes = [{
-  path: '/',
-  component: _Layouts_App__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
+var routes = [// {
+//     path: '/',
+//     component: App,
+// },
+{
+  name: 'quiz',
   path: '/quiz',
   component: _Pages_Home_Quiz__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {

@@ -7,11 +7,12 @@ import App from './Layouts/App'
 
 
 export const routes = [
+    // {
+    //     path: '/',
+    //     component: App,
+    // },
     {
-        path: '/',
-        component: App,
-    },
-    {
+        name: 'quiz',
         path: '/quiz',
         component: Quiz,
     },

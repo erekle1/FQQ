@@ -89,6 +89,7 @@ export default {
         //if user is not created, create it
         if (this.getUser() !== "testUser") {
             this.setUser();
+            this.updateNumOfUsers();
         }
 
         //destroy user after close browser
@@ -125,9 +126,6 @@ export default {
             localStorage.removeItem('finished')
         },
         submitAnswer(answer) {
-            if (this.getUser() !== 'testUser') {
-                this.updateNumOfUsers();
-            }
             this.loading = true;
             if (!this.selectedAnswer) {
                 this.$axios.get(`api/quiz/check-answer?quote_id=${this.quote.id}`).then(res => {
@@ -140,7 +138,7 @@ export default {
         },
         finish() {
             this.isFinished = true;
-            if (localStorage.finished === 1) {
+            if (localStorage.finished !== 1) {
                 this.updateFinishedStatus(true)
             }
             localStorage.finished = 1;

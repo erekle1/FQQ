@@ -19,7 +19,7 @@
 
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <router-link v-for="item in navigation" :key="item.name" :to="item.to" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+                            <router-link v-for="item in navigation" :key="item.name" :to="item.to" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" >{{ item.name }}</router-link>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
 
         <DisclosurePanel class="sm:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <router-link v-for="item in navigation" :key="item.name" :to="item.to" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+                <router-link v-for="item in navigation" :key="item.name" :to="item.to"  :class="[ 'block px-3 py-2 rounded-md text-base font-medium']">{{ item.name }}</router-link>
             </div>
         </DisclosurePanel>
     </Disclosure>
@@ -38,8 +38,8 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const navigation = [
-    { name: 'Dashboard', to: 'quiz', current: true },
-    { name: 'Statistics', to: "statistics", current: false },
+    { name: 'Dashboard', to: 'quiz', routeName:'quiz'  },
+    { name: 'Statistics', to: "statistics", routeName: 'statistics' },
 ]
 
 export default {

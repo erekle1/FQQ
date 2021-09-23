@@ -14,11 +14,13 @@ class StatisticResource extends JsonResource
      */
     public function toArray($request)
     {
+        $correctAnswersPercentage = round(($this->num_of_correct_answers / $this->sum_of_answers) * 100, 2);
+        $finishedPercentage = round(($this->num_of_finished / $this->num_of_users) * 100, 2);
         return [
-            'num_of_users'           => $this->num_of_users,
-            'num_of_finished'        => $this->num_of_finished,
-            'num_of_correct_answers' => $this->num_of_correct_answers,
-            'sum_of_answers'         => $this->sum_of_answers
+            'num_of_users'        => $this->num_of_users,
+            'finished_percentage' => $finishedPercentage,
+            'incorrect_answers'   => 100 - $correctAnswersPercentage,
+            'correct_answers'     => $correctAnswersPercentage
         ];
     }
 }
